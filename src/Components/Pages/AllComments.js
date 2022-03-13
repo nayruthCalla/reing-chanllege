@@ -8,17 +8,25 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
   width: 100%;
-  position: relative;
-  z-index: 0;
+`
+
+const CommentsConatiner = styled.section`
+  margin: 20px;
 `
 
 const AllComments = () => {
   return (
     <Container>
       <SelectCustom defaultValue="Select your news" options={selectValues} />
-      <CommentCard />
+      <CommentsConatiner>
+        <CommentCard
+          date="2022-03-13T18:32:56.000Z"
+          author="bhawks"
+          url="https://finance.yahoo.com/news/goldman-sachs-ceo-demanded-employees-210608499.html"
+          title="CEO demanded all employees return full-time to the office. Only half showed up"
+        />
+      </CommentsConatiner>
     </Container>
   )
 }

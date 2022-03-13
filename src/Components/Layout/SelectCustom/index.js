@@ -7,10 +7,8 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1;
   width: 240px;
-  position: absolute;
-  z-index: 1;
+  position: relative;
 `
 const Button = styled.button`
   display: flex;
@@ -41,6 +39,7 @@ const Select = styled.ul`
   background-color: #fff;
   position: absolute;
   top: 38px;
+  z-index: 1;
 `
 const Option = styled.li`
   list-style: none;

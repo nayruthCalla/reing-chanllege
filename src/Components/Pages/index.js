@@ -4,13 +4,15 @@ import AllComments from './AllComments'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex: 1;
   width: 100%;
 `
 
-const FilterContainer = styled.div``
+const FilterContainer = styled.div`
+  margin: 34px;
+`
 const Button = styled.button`
   width: 98px;
   height: 31px;
