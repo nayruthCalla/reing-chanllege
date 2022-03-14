@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import styled from 'styled-components'
 import AllComments from './AllComments'
 
@@ -41,13 +42,29 @@ const Button = styled.button`
 `
 
 const Home = () => {
+  const [choice, setChoise] = useState('All')
+
   return (
     <Container>
       <FilterContainer>
-        <Button>All</Button>
-        <Button>My faves</Button>
+        <Button
+          type="button"
+          onClick={() => {
+            setChoise('All')
+          }}
+        >
+          All
+        </Button>
+        <Button
+          type="button"
+          onClick={() => {
+            setChoise('Faves')
+          }}
+        >
+          My faves
+        </Button>
       </FilterContainer>
-      <AllComments />
+      <AllComments choice={choice} />
     </Container>
   )
 }

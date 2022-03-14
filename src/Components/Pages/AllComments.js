@@ -34,15 +34,19 @@ const CommentsConatiner = styled.section`
   }
 `
 
-const AllComments = () => {
+const AllComments = ({ choice }) => {
   const [option, setOption] = useState('Angular')
+  const [faves, setFaves] = useState([])
   const dispatch = useAppDispatch()
   const { isLoading, data } = useAppState()
 
   useEffect(async () => {
-    await getDataHackerNews(dispatch, option)
+    if (choice === 'All') {
+      await getDataHackerNews(dispatch, option)
+    }
   }, [option])
-  // console.log(option, data, isLoading)
+
+  // console.log(faves)
   return (
     <Container>
       <SelectCustom
@@ -57,15 +61,19 @@ const AllComments = () => {
       ) : (
         <CommentsConatiner>
           {data.map(
-            ({ created_at, author, story_url, story_title, objectID }) => (
-              <CommentCard
-                key={objectID}
-                date={created_at}
-                author={author}
-                url={story_url}
-                title={story_title}
-              />
-            )
+            ({ created_at, author, story_url, story_title, objectID }) =>
+              !created_at || !author || !story_url || !story_title ? null : (
+                <CommentCard
+                  key={objectID}
+                  date={created_at}
+                  author={author}
+                  url={story_url}
+                  title={story_title}
+                  objectID={objectID}
+                  setFaves={setFaves}
+                  faves={faves}
+                />
+              )
           )}
         </CommentsConatiner>
       )}

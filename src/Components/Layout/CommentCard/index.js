@@ -35,6 +35,7 @@ const Section = styled.a`
   padding-left: 20px;
   text-decoration: none;
   width: inherit;
+  cursor: pointer;
 `
 const Header = styled.header`
   display: flex;
@@ -82,10 +83,32 @@ const FavoriteImage = styled(Image)`
   object-fit: contain;
 `
 
-const CommentCard = ({ date, author, url, title }) => {
+const CommentCard = ({
+  date,
+  author,
+  url,
+  title,
+  objectID,
+  setFaves,
+  faves,
+}) => {
   const [like, setLike] = useState(false)
   const handlerFavorite = () => {
     setLike(!like)
+    const searchId = faves.find((element) => element.objectID === objectID)
+    if (!searchId) {
+      localStorage.setItem(
+        'faves',
+        JSON.stringify([...faves, { objectID, date, author, url, title }])
+      )
+      setFaves([...faves, { objectID, date, author, url, title }])
+    } else {
+      const removeFave = faves.filter(
+        (element) => element.objectID !== objectID
+      )
+      localStorage.setItem('faves', JSON.stringify(removeFave))
+      setFaves(removeFave)
+    }
   }
   return (
     <Container>
