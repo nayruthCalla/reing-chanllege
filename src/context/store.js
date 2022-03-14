@@ -3,6 +3,8 @@ import {
   SET_LOADING,
   GET_ALL_DATA,
   GET_FAVES_FROM_LOCALSTORAGE,
+  GET_DATAHACKERNEWS_FAVES,
+  ADD_DATAHACKERNEWS_FAVES,
 } from './constans'
 
 const AppStateContext = createContext()
@@ -12,6 +14,8 @@ const initialState = {
   isLoading: false,
   data: [],
   faves: [],
+  dataWhitFaves: [],
+  addDataFaves: {},
 }
 
 const appReducer = (state, action) => {
@@ -32,6 +36,18 @@ const appReducer = (state, action) => {
       return {
         ...state,
         faves: action.payload,
+      }
+    }
+    case GET_DATAHACKERNEWS_FAVES: {
+      return {
+        ...state,
+        dataWhitFaves: action.payload,
+      }
+    }
+    case ADD_DATAHACKERNEWS_FAVES: {
+      return {
+        ...state,
+        addDataFaves: action.payload,
       }
     }
     default:

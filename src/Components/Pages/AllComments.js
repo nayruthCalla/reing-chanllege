@@ -5,7 +5,10 @@ import SelectCustom from '../Layout/SelectCustom'
 import selectValues from '../../utils/selectValues'
 import CommentCard from '../Layout/CommentCard'
 import Loading from '../Layout/Loading/Loading'
-import { getDataHackerNews } from '../../context/actions'
+import {
+  addDataFavesToLocalStorage,
+  getDataHackerNewsWithFavorites,
+} from '../../context/actions'
 import { useAppState, useAppDispatch } from '../../context/store'
 
 const Container = styled.div`
@@ -34,19 +37,50 @@ const CommentsConatiner = styled.section`
   }
 `
 
-const AllComments = ({ choice }) => {
-  const [option, setOption] = useState('Angular')
-  const [faves, setFaves] = useState([])
+const AllComments = ({ data, faves, setOption, option }) => {
+  // const [option, setOption] = useState('Angular')
+  const [upadateData, setUpadateData] = useState([])
+  const [favesData, setFavesData] = useState([])
+
   const dispatch = useAppDispatch()
-  const { isLoading, data } = useAppState()
+  const { isLoading, dataWhitFaves } = useAppState()
 
   useEffect(async () => {
-    if (choice === 'All') {
-      await getDataHackerNews(dispatch, option)
-    }
+    // if (choice === 'All') {
+
+    await getDataHackerNewsWithFavorites(dispatch, data, faves)
+
+    //  d}
   }, [option])
 
-  // console.log(faves)
+  console.log(data, 'mira mi data', upadateData)
+
+  const handlerFavorite = ({ objectID, date, author, url, title }) => {
+    const searchId = faves.find((element) => element.objectID === objectID)
+    if (!searchId) {
+      addDataFavesToLocalStorage(
+        dispatch,
+        faves,
+        {
+          objectID,
+          date,
+          author,
+          url,
+          title,
+          fave: true,
+        },
+        option
+      )
+      setUpadateData(dataWhitFaves)
+    } else {
+      const removeFave = faves.filter(
+        (element) => element.objectID !== objectID
+      )
+      localStorage.setItem('faves', JSON.stringify(removeFave))
+      // setFaves(removeFave)
+    }
+  }
+
   return (
     <Container>
       <SelectCustom
@@ -60,20 +94,19 @@ const AllComments = ({ choice }) => {
         </LoadingConatiner>
       ) : (
         <CommentsConatiner>
-          {data.map(
-            ({ created_at, author, story_url, story_title, objectID }) =>
-              !created_at || !author || !story_url || !story_title ? null : (
-                <CommentCard
-                  key={objectID}
-                  date={created_at}
-                  author={author}
-                  url={story_url}
-                  title={story_title}
-                  objectID={objectID}
-                  setFaves={setFaves}
-                  faves={faves}
-                />
-              )
+          {upadateData.map((hit) =>
+            !hit.created_at ||
+            !hit.author ||
+            !hit.story_url ||
+            !hit.story_title ? null : (
+              <CommentCard
+                key={hit.objectID}
+                hit={hit}
+                setFaves={setFavesData}
+                faves={favesData}
+                handlerFavorite={handlerFavorite}
+              />
+            )
           )}
         </CommentsConatiner>
       )}

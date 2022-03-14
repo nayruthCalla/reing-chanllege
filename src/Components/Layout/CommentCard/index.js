@@ -1,10 +1,12 @@
-import { useState } from 'react'
-import PropTypes from 'prop-types'
+// import { useState } from 'react'
+// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import moment from 'moment'
 import time from '../../../assets/iconmonstr-time-2.svg'
 import favorite from '../../../assets/heart/iconmonstr-favorite-3.png'
 import notFavorite from '../../../assets/heart/iconmonstr-favorite-2.png'
+// import { addDataFavesToLocalStorage } from '../../../context/actions'
+// import { useAppDispatch } from '../../../context/store'
 
 const Container = styled.article`
   display: flex;
@@ -83,46 +85,24 @@ const FavoriteImage = styled(Image)`
   object-fit: contain;
 `
 
-const CommentCard = ({
-  date,
-  author,
-  url,
-  title,
-  objectID,
-  setFaves,
-  faves,
-}) => {
-  const [like, setLike] = useState(false)
-  const handlerFavorite = () => {
-    setLike(!like)
-    const searchId = faves.find((element) => element.objectID === objectID)
-    if (!searchId) {
-      localStorage.setItem(
-        'faves',
-        JSON.stringify([...faves, { objectID, date, author, url, title }])
-      )
-      setFaves([...faves, { objectID, date, author, url, title }])
-    } else {
-      const removeFave = faves.filter(
-        (element) => element.objectID !== objectID
-      )
-      localStorage.setItem('faves', JSON.stringify(removeFave))
-      setFaves(removeFave)
-    }
-  }
+const CommentCard = ({ hit, handlerFavorite }) => {
   return (
     <Container>
-      <Section href={url} target="_blank">
+      <Section href={hit.story_url} target="_blank">
         <Header>
           <Image src={time} alt="time-icon" />
           <Text>
-            {moment(date).fromNow()} by {author}
+            {moment(hit.created_at).fromNow()} by {hit.author}
           </Text>
         </Header>
-        <CommentText>{title}</CommentText>
+        <CommentText>{hit.story_title}</CommentText>
       </Section>
-      <FavoriteContainer onClick={handlerFavorite}>
-        {like ? (
+      <FavoriteContainer
+        onClick={() => {
+          handlerFavorite(hit)
+        }}
+      >
+        {hit.fave ? (
           <FavoriteImage src={favorite} alt="heart-icon" />
         ) : (
           <FavoriteImage src={notFavorite} alt="heart-icon" />
@@ -132,14 +112,14 @@ const CommentCard = ({
   )
 }
 
-CommentCard.defaultProps = {
-  title: '',
-  author: '',
-  url: '',
-}
-CommentCard.propTypes = {
-  author: PropTypes.string,
-  url: PropTypes.string,
-  title: PropTypes.string,
-}
+// CommentCard.defaultProps = {
+//   title: '',
+//   hit.author: '',
+//   url: '',
+// }
+// CommentCard.propTypes = {
+//   author: PropTypes.string,
+//   url: PropTypes.string,
+//   title: PropTypes.string,
+// }
 export default CommentCard
