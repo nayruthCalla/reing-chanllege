@@ -22,7 +22,8 @@ const Container = styled.article`
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1024px) {
-    width: 550px;
+    /* width: 550px; */
+    width: 479px;
   }
 `
 const Section = styled.a`
@@ -108,9 +109,14 @@ const CommentCard = ({ date, author, url, title }) => {
   )
 }
 
+CommentCard.defaultProps = {
+  title: '',
+  author: '',
+  url: '',
+}
 CommentCard.propTypes = {
-  author: PropTypes.string.isRequired,
-  url: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  author: PropTypes.string,
+  url: PropTypes.string,
+  title: PropTypes.string,
 }
 export default CommentCard

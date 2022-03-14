@@ -71,12 +71,14 @@ const Span = styled.span`
   color: #343434;
 `
 
-const SelectCustom = ({ defaultValue, options }) => {
+const SelectCustom = ({ defaultValue, options, setOption }) => {
   const [showSelect, setShowSelect] = useState(false)
   const [buttonText, setbuttonText] = useState(defaultValue)
 
   const handlerClick = (text) => {
     setbuttonText(text)
+    setOption(text)
+    setShowSelect(!showSelect)
   }
   return (
     <Container>

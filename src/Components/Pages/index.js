@@ -30,7 +30,11 @@ const Button = styled.button`
   color: #606060;
   cursor: pointer;
   background: none;
-  :hover {
+  &.active {
+    border: solid 1px #1797ff;
+    color: #1797ff;
+  }
+  &:hover {
     color: var(--azure);
     border: solid 1px var(--azure);
   }
