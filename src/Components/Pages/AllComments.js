@@ -6,7 +6,7 @@ import selectValues from '../../utils/selectValues'
 import CommentCard from '../Layout/CommentCard'
 import Loading from '../Layout/Loading/Loading'
 import {
-  addDataFavesToLocalStorage,
+  getDataHackerNews,
   getDataHackerNewsWithFavorites,
 } from '../../context/actions'
 import { useAppState, useAppDispatch } from '../../context/store'
@@ -37,47 +37,69 @@ const CommentsConatiner = styled.section`
   }
 `
 
-const AllComments = ({ data, faves, setOption, option }) => {
-  // const [option, setOption] = useState('Angular')
+const AllComments = () => {
+  const [option, setOption] = useState('Angular')
   const [upadateData, setUpadateData] = useState([])
   const [favesData, setFavesData] = useState([])
+  const [onlyFaves, setOnlyFaves] = useState([])
 
   const dispatch = useAppDispatch()
-  const { isLoading, dataWhitFaves } = useAppState()
+  const { isLoading, data, faves } = useAppState()
 
   useEffect(async () => {
     // if (choice === 'All') {
-
+    await getDataHackerNews(dispatch, option)
     await getDataHackerNewsWithFavorites(dispatch, data, faves)
+    const a = JSON.parse(localStorage.getItem('faves'))
+    if (a) {
+      setOnlyFaves(JSON.parse(localStorage.getItem('faves')))
+    }
 
+    setUpadateData(JSON.parse(localStorage.getItem('allDataHakerNews')))
     //  d}
   }, [option])
 
-  console.log(data, 'mira mi data', upadateData)
+  // console.log(data, 'mira mi data')
 
-  const handlerFavorite = ({ objectID, date, author, url, title }) => {
-    const searchId = faves.find((element) => element.objectID === objectID)
-    if (!searchId) {
-      addDataFavesToLocalStorage(
-        dispatch,
-        faves,
-        {
-          objectID,
-          date,
-          author,
-          url,
-          title,
-          fave: true,
-        },
-        option
-      )
-      setUpadateData(dataWhitFaves)
+  const handlerFavorite = (i) => {
+    if (!i.fave) {
+      setOnlyFaves([...onlyFaves, i])
+      localStorage.setItem('faves', JSON.stringify([...onlyFaves, i]))
+      const newArr = upadateData.map((e) => {
+        if (e.objectID === i.objectID) {
+          return {
+            objectID: e.objectID,
+            created_at: e.created_at,
+            author: e.author,
+            story_url: e.story_url,
+            story_title: e.story_title,
+            fave: true,
+          }
+        }
+        return e
+      })
+      localStorage.setItem('allDataHakerNews', JSON.stringify(newArr))
+      setUpadateData(newArr)
     } else {
-      const removeFave = faves.filter(
-        (element) => element.objectID !== objectID
+      const removeFave = onlyFaves.filter(
+        (element) => element.objectID !== i.objectID
       )
       localStorage.setItem('faves', JSON.stringify(removeFave))
-      // setFaves(removeFave)
+      setOnlyFaves(removeFave)
+      const newArr = upadateData.map((e) => {
+        if (e.objectID === i.objectID) {
+          return {
+            objectID: e.objectID,
+            created_at: e.created_at,
+            author: e.author,
+            story_url: e.story_url,
+            story_title: e.story_title,
+            fave: false,
+          }
+        }
+        return e
+      })
+      setUpadateData(newArr)
     }
   }
 

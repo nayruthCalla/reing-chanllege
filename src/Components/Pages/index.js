@@ -1,11 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import AllComments from './AllComments'
-import {
-  getDataHackerNews,
-  getFavesFromLocalStorage,
-} from '../../context/actions'
-import { useAppState, useAppDispatch } from '../../context/store'
 
 const Container = styled.div`
   display: flex;
@@ -48,17 +43,8 @@ const Button = styled.button`
 
 const Home = () => {
   const [choice, setChoise] = useState('All')
-  const [option, setOption] = useState('Angular')
-  const dispatch = useAppDispatch()
-  const { data, faves } = useAppState()
 
-  useEffect(async () => {
-    // if (choice === 'All') {
-    await getDataHackerNews(dispatch, option)
-    await getFavesFromLocalStorage(dispatch, null)
-    console.log(choice)
-    //  d}
-  }, [option])
+  console.log(choice)
 
   return (
     <Container>
@@ -80,12 +66,7 @@ const Home = () => {
           My faves
         </Button>
       </FilterContainer>
-      <AllComments
-        data={data}
-        setOption={setOption}
-        option={option}
-        faves={faves}
-      />
+      <AllComments />
     </Container>
   )
 }
