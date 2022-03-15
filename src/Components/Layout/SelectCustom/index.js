@@ -9,6 +9,12 @@ const Container = styled.div`
   align-items: center;
   width: 240px;
   position: relative;
+  @media screen and (min-width: 768px) {
+  }
+  @media screen and (min-width: 1024px) {
+    align-self: flex-start;
+    margin: 63px 114px 1px 150px;
+  }
 `
 const Button = styled.button`
   display: flex;

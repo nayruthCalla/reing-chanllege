@@ -3,10 +3,12 @@
 import axios from '../utils/axios'
 import { SET_LOADING, GET_ALL_DATA } from './constans'
 
-export const getDataHackerNews = async (dispatch, option) => {
+export const getDataHackerNews = async (dispatch, option, page) => {
   try {
     dispatch({ type: SET_LOADING, payload: true })
-    const { data } = await axios.get(`/search_by_date?query=${option}&page=0`)
+    const { data } = await axios.get(
+      `/search_by_date?query=${option}&page=${page}`
+    )
     const faves = JSON.parse(localStorage.getItem('faves'))
     const newArr = []
     if (faves) {

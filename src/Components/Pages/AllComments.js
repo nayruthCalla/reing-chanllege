@@ -5,6 +5,7 @@ import SelectCustom from '../Layout/SelectCustom'
 import selectValues from '../../utils/selectValues'
 import CommentCard from '../Layout/CommentCard'
 import Loading from '../Layout/Loading/Loading'
+import Pagination from '../Layout/Pagination'
 import { getDataHackerNews } from '../../context/actions'
 import { useAppDispatch } from '../../context/store'
 
@@ -33,20 +34,22 @@ const CommentsConatiner = styled.section`
     align-items: center;
   }
 `
+const numberPage = [0, 1, 2, 3, 4, 5, 6, 7, 8]
 
 const AllComments = ({ choice }) => {
   const [option, setOption] = useState('Angular')
   const [upadateData, setUpadateData] = useState([])
   const [onlyFaves, setOnlyFaves] = useState([])
+  const [page, setPage] = useState(0)
   // const { isLoading } = useAppState()
 
   const dispatch = useAppDispatch()
 
   useEffect(async () => {
-    await getDataHackerNews(dispatch, option)
+    await getDataHackerNews(dispatch, option, page)
     setUpadateData(JSON.parse(localStorage.getItem('allDataHakerNews')))
     setOnlyFaves(JSON.parse(localStorage.getItem('faves')))
-  }, [option, choice])
+  }, [option, choice, page])
 
   const handlerFavorite = ({
     objectID,
@@ -100,7 +103,7 @@ const AllComments = ({ choice }) => {
       setUpadateData(newArr)
     }
   }
-
+  console.log(page)
   return (
     <Container>
       {choice === 'All' ? (
@@ -143,6 +146,7 @@ const AllComments = ({ choice }) => {
               )}
         </CommentsConatiner>
       )}
+      <Pagination numberPage={numberPage} setPage={setPage} page={page} />
     </Container>
   )
 }

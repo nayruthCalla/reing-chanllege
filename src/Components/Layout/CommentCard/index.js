@@ -24,7 +24,6 @@ const Container = styled.article`
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1024px) {
-    /* width: 550px; */
     width: 479px;
   }
 `
@@ -92,7 +91,10 @@ const CommentCard = ({ hit, handlerFavorite }) => {
         <Header>
           <Image src={time} alt="time-icon" />
           <Text>
-            {moment(hit.created_at).fromNow()} by {hit.author}
+            {moment(hit.created_at).fromNow() === 'an hour ago'
+              ? '1 hour ago'
+              : moment(hit.created_at).fromNow()}{' '}
+            by {hit.author}
           </Text>
         </Header>
         <CommentText>{hit.story_title}</CommentText>

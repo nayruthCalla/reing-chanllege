@@ -5,7 +5,6 @@ import AllComments from './AllComments'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
   flex: 1;
   width: 100%;
@@ -14,12 +13,12 @@ const Container = styled.div`
 const FilterContainer = styled.div`
   margin: 34px;
 `
+
 const Button = styled.button`
   width: 98px;
   height: 31px;
   padding: 3px 16px 0 17px;
   border-radius: 2px;
-  border: solid 1px #d6d6d6;
   font-family: var(--secondary-font);
   font-size: 16px;
   font-weight: 500;
@@ -29,6 +28,7 @@ const Button = styled.button`
   letter-spacing: normal;
   text-align: center;
   color: #606060;
+  border: solid 1px #d6d6d6;
   cursor: pointer;
   background: none;
   &.active {
@@ -36,8 +36,7 @@ const Button = styled.button`
     color: #1797ff;
   }
   &:hover {
-    color: var(--azure);
-    border: solid 1px var(--azure);
+    opacity: 0.4;
   }
 `
 
@@ -48,6 +47,7 @@ const Home = () => {
     <Container>
       <FilterContainer>
         <Button
+          className={`${choice === 'All' ? 'active' : ''}`}
           type="button"
           onClick={() => {
             setChoise('All')
@@ -56,6 +56,7 @@ const Home = () => {
           All
         </Button>
         <Button
+          className={`${choice === 'Faves' ? 'active' : ''}`}
           type="button"
           onClick={() => {
             setChoise('Faves')
