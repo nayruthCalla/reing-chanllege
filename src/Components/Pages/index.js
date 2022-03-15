@@ -44,8 +44,6 @@ const Button = styled.button`
 const Home = () => {
   const [choice, setChoise] = useState('All')
 
-  console.log(choice)
-
   return (
     <Container>
       <FilterContainer>
@@ -66,7 +64,7 @@ const Home = () => {
           My faves
         </Button>
       </FilterContainer>
-      <AllComments />
+      <AllComments choice={choice} />
     </Container>
   )
 }

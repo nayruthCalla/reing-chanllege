@@ -1,21 +1,12 @@
 import { createContext, useContext, useReducer } from 'react'
-import {
-  SET_LOADING,
-  GET_ALL_DATA,
-  GET_FAVES_FROM_LOCALSTORAGE,
-  GET_DATAHACKERNEWS_FAVES,
-  ADD_DATAHACKERNEWS_FAVES,
-} from './constans'
+import { SET_LOADING, GET_ALL_DATA } from './constans'
 
 const AppStateContext = createContext()
 const AppDispatchContext = createContext()
 
 const initialState = {
   isLoading: false,
-  data: [],
-  faves: [],
   dataWhitFaves: [],
-  addDataFaves: {},
 }
 
 const appReducer = (state, action) => {
@@ -29,27 +20,10 @@ const appReducer = (state, action) => {
     case GET_ALL_DATA: {
       return {
         ...state,
-        data: action.payload,
-      }
-    }
-    case GET_FAVES_FROM_LOCALSTORAGE: {
-      return {
-        ...state,
-        faves: action.payload,
-      }
-    }
-    case GET_DATAHACKERNEWS_FAVES: {
-      return {
-        ...state,
         dataWhitFaves: action.payload,
       }
     }
-    case ADD_DATAHACKERNEWS_FAVES: {
-      return {
-        ...state,
-        addDataFaves: action.payload,
-      }
-    }
+
     default:
       throw new Error(`Unhandled action type: ${action.type}`)
   }
