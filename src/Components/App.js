@@ -45,7 +45,7 @@ const Link = styled.a`
   color: #3e3f3ab8;
 `
 
-const App = () => {
+function App() {
   return (
     <Container>
       <Header>

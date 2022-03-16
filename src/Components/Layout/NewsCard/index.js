@@ -1,12 +1,8 @@
-// import { useState } from 'react'
-// import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import moment from 'moment'
 import time from '../../../assets/iconmonstr-time-2.svg'
 import favorite from '../../../assets/heart/iconmonstr-favorite-3.png'
 import notFavorite from '../../../assets/heart/iconmonstr-favorite-2.png'
-// import { addDataFavesToLocalStorage } from '../../../context/actions'
-// import { useAppDispatch } from '../../../context/store'
 
 const Container = styled.article`
   display: flex;
@@ -84,7 +80,7 @@ const FavoriteImage = styled(Image)`
   object-fit: contain;
 `
 
-const CommentCard = ({ hit, handlerFavorite }) => {
+function NewsCard({ hit, handlerFavorite }) {
   return (
     <Container>
       <Section href={hit.story_url} target="_blank">
@@ -114,14 +110,4 @@ const CommentCard = ({ hit, handlerFavorite }) => {
   )
 }
 
-// CommentCard.defaultProps = {
-//   title: '',
-//   hit.author: '',
-//   url: '',
-// }
-// CommentCard.propTypes = {
-//   author: PropTypes.string,
-//   url: PropTypes.string,
-//   title: PropTypes.string,
-// }
-export default CommentCard
+export default NewsCard

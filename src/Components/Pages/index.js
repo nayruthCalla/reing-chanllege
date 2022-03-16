@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import AllComments from './AllComments'
+import AllNwes from './AllNews'
 
 const Container = styled.div`
   display: flex;
@@ -40,7 +40,7 @@ const Button = styled.button`
   }
 `
 
-const Home = () => {
+function Home() {
   const [choice, setChoise] = useState('All')
 
   return (
@@ -65,7 +65,7 @@ const Home = () => {
           My faves
         </Button>
       </FilterContainer>
-      <AllComments choice={choice} />
+      <AllNwes choice={choice} />
     </Container>
   )
 }

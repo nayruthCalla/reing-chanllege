@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useState } from 'react'
 import styled from 'styled-components'
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
@@ -41,7 +42,7 @@ const Span = styled.span`
   text-align: center;
 `
 
-const Pagination = ({ paginIni, setPage, page }) => {
+function Pagination({ paginIni, setPage, page }) {
   const [isActive, setIsActive] = useState(0)
 
   const [numberPage, setNumberPage] = useState(paginIni)
