@@ -1,5 +1,7 @@
 # Hacker News Challenge
-### ❤️ Revisa la [DEMO](https://hackernewsreing.netlify.app/) 👀 ❤️
+HackerNewsaraing allows you to see the news the technologies that you like the most React, Angula Vuejs
+
+### ❤️ Check the[DEMO](https://hackernewsreing.netlify.app/) 👀 ❤️
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a488b7a6-1924-4f52-8aa0-25d614d67d4b/deploy-status)](https://app.netlify.com/sites/hackernewsreing/deploys)
 
 
@@ -26,6 +28,7 @@ icons, like button, etc)
 
  * [React](https://es.reactjs.org/)
  * [Styled Components](https://styled-components.com/)
+ * [Axios](https://axios-http.com/)
  * [Testing library](https://testing-library.com/)
  * [Cypress](https://www.cypress.io/)
  * [Storybook](https://storybook.js.org/)
@@ -33,6 +36,16 @@ icons, like button, etc)
  * [Netlify](https://www.netlify.com/)
  * [Git](https://git-scm.com/)
  * [GitHub Proyects](https://github.com/nayruthCalla/reing-chanllege/projects/1)
+ * 
+
+ ## API
+The web application must request data to the Hackers News public API. The dropdown
+selector component should use the URL parameter “query” from the “search by date”
+API in order to filter the posts, for example:
+
+● Angular: https://hn.algolia.com/api/v1/search_by_date?query=angular&page=0
+● React: https://hn.algolia.com/api/v1/search_by_date?query=reactjs&page=0
+● Vuejs: https://hn.algolia.com/api/v1/search_by_date?query=vuejs&page=0
 
 ##  Installation
 1) Have a 📝 text editor.
