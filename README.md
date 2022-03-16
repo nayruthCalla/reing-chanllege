@@ -44,8 +44,11 @@ selector component should use the URL parameter “query” from the “search b
 API in order to filter the posts, for example:
 
 ● Angular: https://hn.algolia.com/api/v1/search_by_date?query=angular&page=0
+
 ● React: https://hn.algolia.com/api/v1/search_by_date?query=reactjs&page=0
+
 ● Vuejs: https://hn.algolia.com/api/v1/search_by_date?query=vuejs&page=0
+
 
 ##  Installation
 1) Have a 📝 text editor.
