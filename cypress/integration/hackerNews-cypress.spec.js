@@ -23,15 +23,9 @@ describe('HACKER NEWS - 2to2', () => {
     cy.contains('Reacts');
     cy.contains('Vuejs');
   });
+
   it('Click the my favorite button', () => {
-    cy.get('[name="select"]').click(15, 150, { force: true });
-  });
-  it('Renders the navigation text in the All News view', () => {
-    cy.contains('My faves').then(() => {
-      return cy.contains('My faves').click();
-    });
-    // cy.url().then(() => {
-    //   return cy.should('include', '/hour');
-    // });
+    cy.get('[ data-test="buttonFave"]').click({ multiple: true });
+    cy.contains('My faves').click();
   });
 });

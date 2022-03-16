@@ -7,7 +7,7 @@ import NewsCard from '../Layout/NewsCard';
 import Loading from '../Layout/Loading/Loading';
 import Pagination from '../Layout/Pagination';
 import { getDataHackerNews } from '../../context/actions';
-import { useAppDispatch } from '../../context/store';
+import { useAppState, useAppDispatch } from '../../context/store';
 
 const Container = styled.div`
   display: flex;
@@ -57,6 +57,7 @@ function AllNews({ choice }) {
   const paginIniMobile = [0, 1, 2];
 
   const dispatch = useAppDispatch();
+  const { isLoading } = useAppState();
 
   useEffect(async () => {
     await getDataHackerNews(dispatch, option, page);
@@ -134,7 +135,7 @@ function AllNews({ choice }) {
           <Loading />
         </LoadingConatiner>
       ) : (
-        <CommentsConatiner>
+        <CommentsConatiner data-test="AllCards">
           {choice === 'All'
             ? upadateData.map((hit) =>
                 !hit.created_at ||
@@ -145,6 +146,7 @@ function AllNews({ choice }) {
                     key={hit.objectID}
                     hit={hit}
                     handlerFavorite={handlerFavorite}
+                    isLoading={isLoading}
                   />
                 )
               )
@@ -157,6 +159,7 @@ function AllNews({ choice }) {
                     key={hit.objectID}
                     hit={hit}
                     handlerFavorite={handlerFavorite}
+                    isLoading={isLoading}
                   />
                 )
               )}

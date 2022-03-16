@@ -3,6 +3,7 @@ import moment from 'moment';
 import time from '../../../assets/iconmonstr-time-2.svg';
 import favorite from '../../../assets/heart/iconmonstr-favorite-3.png';
 import notFavorite from '../../../assets/heart/iconmonstr-favorite-2.png';
+import loadingT from '../../../assets/loading.gif';
 
 const Container = styled.article`
   display: flex;
@@ -13,6 +14,7 @@ const Container = styled.article`
   border: solid 1px #979797;
   background-color: #fff;
   width: 100%;
+  min-width: 270px;
   height: 90px;
   :hover {
     opacity: 0.4;
@@ -48,6 +50,8 @@ const Text = styled.p`
   line-height: normal;
   letter-spacing: normal;
   color: #767676;
+  /* background: ${({ isLoading }) => (isLoading ? '#000' : 'none')}; */
+  /* width: 20px; */
 `;
 const CommentText = styled.h3`
   font-family: var(--secondary-font);
@@ -79,21 +83,34 @@ const FavoriteImage = styled(Image)`
   height: 22px;
   object-fit: contain;
 `;
+const Loading = styled.img`
+  width: 10rem;
+  display: flex;
+  align-self: center;
+`;
 
-function NewsCard({ hit, handlerFavorite }) {
+function NewsCard({ hit, handlerFavorite, isLoading }) {
   return (
     <Container>
       <Section href={hit.story_url} target="_blank">
-        <Header>
-          <Image src={time} alt="time-icon" />
-          <Text>
-            {moment(hit.created_at).fromNow() === 'an hour ago'
-              ? '1 hour ago'
-              : moment(hit.created_at).fromNow()}{' '}
-            by {hit.author}
-          </Text>
-        </Header>
-        <CommentText>{hit.story_title}</CommentText>
+        {isLoading ? (
+          <Loading src={loadingT} alt="loading" />
+        ) : (
+          <div>
+            <Header>
+              <Image src={time} alt="time-icon" />
+
+              <Text>
+                {moment(hit.created_at).fromNow() === 'an hour ago'
+                  ? '1 hour ago'
+                  : moment(hit.created_at).fromNow()}{' '}
+                by {hit.author}
+              </Text>
+            </Header>
+
+            <CommentText>{hit.story_title}</CommentText>
+          </div>
+        )}
       </Section>
       <FavoriteContainer
         data-test="buttonFave"

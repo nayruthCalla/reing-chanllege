@@ -23,7 +23,8 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "chromatic": "npx chromatic --project-token=7df346161fcf"
   },
   "eslintConfig": {
     "extends": [
@@ -66,6 +67,7 @@
     "@storybook/testing-library": "^0.0.9",
     "axios-mock-adapter": "^1.20.0",
     "babel-eslint": "^10.1.0",
+    "chromatic": "^6.5.3",
     "cypress": "^9.5.2",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.4",
