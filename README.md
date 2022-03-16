@@ -68,6 +68,7 @@ API in order to filter the posts, for example:
 
 🚀 npm run cypress:open
 
+![image](https://user-images.githubusercontent.com/47750079/158615849-adf44f19-953e-4723-b7b6-6de8118aacbb.png)
 
 
 ![image](https://user-images.githubusercontent.com/47750079/147318587-87660328-2dce-4ead-bd9f-972151e450b0.png)
