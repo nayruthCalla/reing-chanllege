@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const LoadingSpin = styled.div`
   color: official;
@@ -79,7 +79,7 @@ const LoadingSpin = styled.div`
       opacity: 0;
     }
   }
-`
+`;
 
 function Loading() {
   return (
@@ -97,7 +97,7 @@ function Loading() {
       <div />
       <div />
     </LoadingSpin>
-  )
+  );
 }
 
-export default Loading
+export default Loading;

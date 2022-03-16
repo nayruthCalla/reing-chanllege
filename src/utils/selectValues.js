@@ -1,6 +1,6 @@
-import angularIcon from '../assets/angular/image-138.png'
-import reactIcon from '../assets/react/image-140.png'
-import vuejaIcon from '../assets/vuejs/image-141.png'
+import angularIcon from '../assets/angular/image-138.png';
+import reactIcon from '../assets/react/image-140.png';
+import vuejaIcon from '../assets/vuejs/image-141.png';
 
 const selectValues = [
   {
@@ -15,5 +15,5 @@ const selectValues = [
     text: 'Vuejs',
     icon: vuejaIcon,
   },
-]
-export default selectValues
+];
+export default selectValues;

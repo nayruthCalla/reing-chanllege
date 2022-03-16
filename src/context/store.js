@@ -1,13 +1,13 @@
-import { createContext, useContext, useReducer } from 'react'
-import { SET_LOADING, GET_ALL_DATA } from './constans'
+import { createContext, useContext, useReducer } from 'react';
+import { SET_LOADING, GET_ALL_DATA } from './constans';
 
-const AppStateContext = createContext()
-const AppDispatchContext = createContext()
+const AppStateContext = createContext();
+const AppDispatchContext = createContext();
 
 const initialState = {
   isLoading: false,
   dataWhitFaves: [],
-}
+};
 
 const appReducer = (state, action) => {
   switch (action.type) {
@@ -15,22 +15,22 @@ const appReducer = (state, action) => {
       return {
         ...state,
         isLoading: action.payload,
-      }
+      };
     }
     case GET_ALL_DATA: {
       return {
         ...state,
         dataWhitFaves: action.payload,
-      }
+      };
     }
 
     default:
-      throw new Error(`Unhandled action type: ${action.type}`)
+      throw new Error(`Unhandled action type: ${action.type}`);
   }
-}
+};
 
-const AppProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(appReducer, initialState)
+function AppProvider({ children }) {
+  const [state, dispatch] = useReducer(appReducer, initialState);
 
   return (
     <AppStateContext.Provider value={state}>
@@ -38,23 +38,23 @@ const AppProvider = ({ children }) => {
         {children}
       </AppDispatchContext.Provider>
     </AppStateContext.Provider>
-  )
+  );
 }
 
 const useAppState = () => {
-  const context = useContext(AppStateContext)
+  const context = useContext(AppStateContext);
   if (context === undefined) {
-    throw new Error('useAppState must be used within a AppProvider')
+    throw new Error('useAppState must be used within a AppProvider');
   }
-  return context
-}
+  return context;
+};
 
 const useAppDispatch = () => {
-  const context = useContext(AppDispatchContext)
+  const context = useContext(AppDispatchContext);
   if (context === undefined) {
-    throw new Error('useAppDispatch must be used within a AppProvider')
+    throw new Error('useAppDispatch must be used within a AppProvider');
   }
-  return context
-}
+  return context;
+};
 
-export { AppProvider, useAppState, useAppDispatch }
+export { AppProvider, useAppState, useAppDispatch };

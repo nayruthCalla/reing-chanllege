@@ -1,7 +1,7 @@
 /* eslint-disable react/no-array-index-key */
-import { useState } from 'react'
-import styled from 'styled-components'
-import { FaAngleDown } from 'react-icons/fa'
+import { useState } from 'react';
+import styled from 'styled-components';
+import { FaAngleDown } from 'react-icons/fa';
 
 const Container = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const Container = styled.div`
     align-self: flex-start;
     margin: 63px 114px 1px 150px;
   }
-`
+`;
 const Button = styled.button`
   display: flex;
   justify-content: space-between;
@@ -29,10 +29,10 @@ const Button = styled.button`
   font-size: 1.7rem;
   color: #343434;
   cursor: pointer;
-`
+`;
 const Image = styled.img`
   margin-left: 1.5rem;
-`
+`;
 
 const Select = styled.ul`
   display: flex;
@@ -47,11 +47,11 @@ const Select = styled.ul`
   position: absolute;
   top: 38px;
   z-index: 1;
-`
+`;
 const Option = styled.li`
   list-style: none;
   width: 100%;
-`
+`;
 const OptionButton = styled.button`
   display: flex;
   justify-content: flex-start;
@@ -65,7 +65,7 @@ const OptionButton = styled.button`
   :hover {
     background-color: #7e7e7e12;
   }
-`
+`;
 
 const Span = styled.span`
   font-family: var(--secondary-font);
@@ -76,24 +76,24 @@ const Span = styled.span`
   line-height: 1.57;
   letter-spacing: normal;
   color: #343434;
-`
+`;
 
 function SelectCustom({ defaultValue, options, setOption }) {
-  const [showSelect, setShowSelect] = useState(false)
-  const [buttonText, setbuttonText] = useState(defaultValue)
+  const [showSelect, setShowSelect] = useState(false);
+  const [buttonText, setbuttonText] = useState(defaultValue);
 
   const handlerClick = (text) => {
-    setbuttonText(text)
-    setOption(text)
-    setShowSelect(!showSelect)
-  }
+    setbuttonText(text);
+    setOption(text);
+    setShowSelect(!showSelect);
+  };
   return (
     <Container>
       <Button
         name="select"
         type="button"
         onClick={() => {
-          setShowSelect(!showSelect)
+          setShowSelect(!showSelect);
         }}
       >
         <Span>{buttonText}</Span>
@@ -105,7 +105,7 @@ function SelectCustom({ defaultValue, options, setOption }) {
             <Option key={index}>
               <OptionButton
                 onClick={() => {
-                  handlerClick(text)
+                  handlerClick(text);
                 }}
               >
                 {icon ? <Image src={icon} alt={`${text}-icon`} /> : null}
@@ -116,7 +116,7 @@ function SelectCustom({ defaultValue, options, setOption }) {
         </Select>
       ) : null}
     </Container>
-  )
+  );
 }
 
-export default SelectCustom
+export default SelectCustom;

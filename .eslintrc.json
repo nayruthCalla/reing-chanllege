@@ -9,8 +9,8 @@
       "plugin:react/recommended",
       "airbnb",
       "plugin:jsx-a11y/recommended",
-      "prettier"
-      
+      "prettier",
+      "plugin:cypress/recommended"
   ],
   "parserOptions": {
       "ecmaFeatures": {
@@ -22,16 +22,14 @@
   "plugins": [
       "react",
       "prettier",
-      "jest"
-      
+      "jest",
+      "cypress"
   ],
   "rules": {
       "prettier/prettier":[
           "error", {
           "endOfLine": "auto"
       }],
-      "import/no-named-as-default-member":0,
-      "import/no-named-as-default": 0,
       "react/jsx-filename-extension":[1,{"extensions":[".js",".jsx"]}],
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",

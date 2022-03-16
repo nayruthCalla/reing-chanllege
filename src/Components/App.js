@@ -1,5 +1,5 @@
-import styled from 'styled-components'
-import Home from './Pages'
+import styled from 'styled-components';
+import Home from './Pages';
 
 const Container = styled.div`
   display: flex;
@@ -7,7 +7,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-`
+`;
 
 const Header = styled.header`
   width: 100%;
@@ -17,7 +17,7 @@ const Header = styled.header`
   align-items: center;
   box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
   background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
-`
+`;
 const Title = styled.h1`
   width: 208px;
   height: 28px;
@@ -34,16 +34,16 @@ const Title = styled.h1`
     align-self: flex-start;
     padding: 0px 114px 1px 150px;
   }
-`
+`;
 const Footer = styled.footer`
   padding: 3rem 0 1rem 0;
-`
+`;
 const Link = styled.a`
   text-decoration: none;
   font-family: var(--principal-font);
   font-size: 14px;
   color: #3e3f3ab8;
-`
+`;
 
 function App() {
   return (
@@ -58,7 +58,7 @@ function App() {
         </Link>
       </Footer>
     </Container>
-  )
+  );
 }
 
-export default App
+export default App;
