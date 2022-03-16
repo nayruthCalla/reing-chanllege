@@ -1,8 +1,8 @@
-import styled from 'styled-components'
-import moment from 'moment'
-import time from '../../../assets/iconmonstr-time-2.svg'
-import favorite from '../../../assets/heart/iconmonstr-favorite-3.png'
-import notFavorite from '../../../assets/heart/iconmonstr-favorite-2.png'
+import styled from 'styled-components';
+import moment from 'moment';
+import time from '../../../assets/iconmonstr-time-2.svg';
+import favorite from '../../../assets/heart/iconmonstr-favorite-3.png';
+import notFavorite from '../../../assets/heart/iconmonstr-favorite-2.png';
 
 const Container = styled.article`
   display: flex;
@@ -22,7 +22,7 @@ const Container = styled.article`
   @media screen and (min-width: 1024px) {
     width: 479px;
   }
-`
+`;
 const Section = styled.a`
   display: flex;
   flex-direction: column;
@@ -33,12 +33,12 @@ const Section = styled.a`
   text-decoration: none;
   width: inherit;
   cursor: pointer;
-`
+`;
 const Header = styled.header`
   display: flex;
   gap: 0.5rem;
-`
-const Image = styled.img``
+`;
+const Image = styled.img``;
 const Text = styled.p`
   font-family: var(--secondary-font);
   font-size: 11px;
@@ -48,7 +48,7 @@ const Text = styled.p`
   line-height: normal;
   letter-spacing: normal;
   color: #767676;
-`
+`;
 const CommentText = styled.h3`
   font-family: var(--secondary-font);
   font-size: var(--secondary-font-size);
@@ -60,7 +60,7 @@ const CommentText = styled.h3`
   color: #6b6b6b;
   margin: 0;
   font-weight: bold;
-`
+`;
 const FavoriteContainer = styled.button`
   display: flex;
   flex-direction: column;
@@ -73,12 +73,12 @@ const FavoriteContainer = styled.button`
   background-color: rgba(96, 96, 96, 0.08);
   padding-left: 0;
   cursor: pointer;
-`
+`;
 const FavoriteImage = styled(Image)`
   width: 24px;
   height: 22px;
   object-fit: contain;
-`
+`;
 
 function NewsCard({ hit, handlerFavorite }) {
   return (
@@ -96,8 +96,9 @@ function NewsCard({ hit, handlerFavorite }) {
         <CommentText>{hit.story_title}</CommentText>
       </Section>
       <FavoriteContainer
+        data-test="buttonFave"
         onClick={() => {
-          handlerFavorite(hit)
+          handlerFavorite(hit);
         }}
       >
         {hit.fave ? (
@@ -107,7 +108,7 @@ function NewsCard({ hit, handlerFavorite }) {
         )}
       </FavoriteContainer>
     </Container>
-  )
+  );
 }
 
-export default NewsCard
+export default NewsCard;

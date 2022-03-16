@@ -1,12 +1,12 @@
 /* eslint-disable react/no-array-index-key */
-import { useState } from 'react'
-import styled from 'styled-components'
-import { FaAngleLeft, FaAngleRight } from 'react-icons/fa'
+import { useState } from 'react';
+import styled from 'styled-components';
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 
 const PaginationContainer = styled.footer`
   display: flex;
   margin-top: 50px;
-`
+`;
 
 const PaginationButton = styled.button`
   display: flex;
@@ -28,7 +28,7 @@ const PaginationButton = styled.button`
   :hover {
     opacity: 0.7;
   }
-`
+`;
 const Span = styled.span`
   width: 8px;
   height: 22px;
@@ -40,29 +40,29 @@ const Span = styled.span`
   line-height: 25px;
   letter-spacing: normal;
   text-align: center;
-`
+`;
 
 function Pagination({ paginIni, setPage, page }) {
-  const [isActive, setIsActive] = useState(0)
+  const [isActive, setIsActive] = useState(0);
 
-  const [numberPage, setNumberPage] = useState(paginIni)
+  const [numberPage, setNumberPage] = useState(paginIni);
 
   const handlerClick = (element) => {
-    setPage(element)
-    setIsActive(element)
-  }
+    setPage(element);
+    setIsActive(element);
+  };
   const handlerNextPage = () => {
-    const newArr = numberPage.map((e) => e + 1)
-    setNumberPage(newArr)
-    setPage(page + 1)
-    setIsActive(isActive + 1)
-  }
+    const newArr = numberPage.map((e) => e + 1);
+    setNumberPage(newArr);
+    setPage(page + 1);
+    setIsActive(isActive + 1);
+  };
   const handlerBackPage = () => {
-    const newArr = numberPage.map((e) => e - 1)
-    setNumberPage(newArr)
-    setPage(page - 1)
-    setIsActive(isActive - 1)
-  }
+    const newArr = numberPage.map((e) => e - 1);
+    setNumberPage(newArr);
+    setPage(page - 1);
+    setIsActive(isActive - 1);
+  };
 
   return (
     <PaginationContainer>
@@ -74,7 +74,7 @@ function Pagination({ paginIni, setPage, page }) {
           className={`${isActive === element ? 'active' : ''}`}
           key={index}
           onClick={() => {
-            handlerClick(element)
+            handlerClick(element);
           }}
         >
           <Span>{element + 1}</Span>
@@ -84,7 +84,7 @@ function Pagination({ paginIni, setPage, page }) {
         <FaAngleRight />
       </PaginationButton>
     </PaginationContainer>
-  )
+  );
 }
 
-export default Pagination
+export default Pagination;

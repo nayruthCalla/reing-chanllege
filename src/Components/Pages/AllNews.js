@@ -1,13 +1,13 @@
 /* eslint-disable camelcase */
-import { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import SelectCustom from '../Layout/SelectCustom'
-import selectValues from '../../utils/selectValues'
-import NewsCard from '../Layout/NewsCard'
-import Loading from '../Layout/Loading/Loading'
-import Pagination from '../Layout/Pagination'
-import { getDataHackerNews } from '../../context/actions'
-import { useAppDispatch } from '../../context/store'
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import SelectCustom from '../Layout/SelectCustom';
+import selectValues from '../../utils/selectValues';
+import NewsCard from '../Layout/NewsCard';
+import Loading from '../Layout/Loading/Loading';
+import Pagination from '../Layout/Pagination';
+import { getDataHackerNews } from '../../context/actions';
+import { useAppDispatch } from '../../context/store';
 
 const Container = styled.div`
   display: flex;
@@ -15,10 +15,10 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-`
+`;
 const LoadingConatiner = styled(Container)`
   margin-top: 10%;
-`
+`;
 
 const CommentsConatiner = styled.section`
   margin: 20px;
@@ -34,35 +34,38 @@ const CommentsConatiner = styled.section`
     justify-content: center;
     align-items: center;
   }
-`
+`;
 const PaginationContainerDesk = styled.div`
   display: none;
   @media screen and (min-width: 1024px) {
     display: flex;
   }
-`
+`;
 const PaginationContainerMobile = styled.div`
   display: flex;
   @media screen and (min-width: 1024px) {
     display: none;
   }
-`
+`;
 
 function AllNews({ choice }) {
-  const [option, setOption] = useState('Angular')
-  const [upadateData, setUpadateData] = useState([])
-  const [onlyFaves, setOnlyFaves] = useState([])
-  const [page, setPage] = useState(0)
-  const paginIni = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-  const paginIniMobile = [0, 1, 2]
+  const [option, setOption] = useState('Angular');
+  const [upadateData, setUpadateData] = useState([]);
+  const [onlyFaves, setOnlyFaves] = useState([]);
+  const [page, setPage] = useState(0);
+  const paginIni = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+  const paginIniMobile = [0, 1, 2];
 
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
   useEffect(async () => {
-    await getDataHackerNews(dispatch, option, page)
-    setUpadateData(JSON.parse(localStorage.getItem('allDataHakerNews')))
-    setOnlyFaves(JSON.parse(localStorage.getItem('faves')))
-  }, [option, choice, page])
+    await getDataHackerNews(dispatch, option, page);
+    setUpadateData(JSON.parse(localStorage.getItem('allDataHakerNews')));
+    const isInLocalStorage = JSON.parse(localStorage.getItem('faves'));
+    if (isInLocalStorage) {
+      setOnlyFaves(JSON.parse(localStorage.getItem('faves')));
+    }
+  }, [option, choice, page]);
 
   const handlerFavorite = ({
     objectID,
@@ -80,26 +83,26 @@ function AllNews({ choice }) {
         story_url,
         story_title,
         fave: true,
-      }
-      setOnlyFaves([...onlyFaves, changeToLike])
+      };
+      setOnlyFaves([...onlyFaves, changeToLike]);
       localStorage.setItem(
         'faves',
         JSON.stringify([...onlyFaves, changeToLike])
-      )
+      );
       const newArr = upadateData.map((e) => {
         if (e.objectID === objectID) {
-          return changeToLike
+          return changeToLike;
         }
-        return e
-      })
-      localStorage.setItem('allDataHakerNews', JSON.stringify(newArr))
-      setUpadateData(newArr)
+        return e;
+      });
+      localStorage.setItem('allDataHakerNews', JSON.stringify(newArr));
+      setUpadateData(newArr);
     } else {
       const removeFave = onlyFaves.filter(
         (element) => element.objectID !== objectID
-      )
-      localStorage.setItem('faves', JSON.stringify(removeFave))
-      setOnlyFaves(removeFave)
+      );
+      localStorage.setItem('faves', JSON.stringify(removeFave));
+      setOnlyFaves(removeFave);
       const newArr = upadateData.map((e) => {
         if (e.objectID === objectID) {
           return {
@@ -109,13 +112,13 @@ function AllNews({ choice }) {
             story_url: e.story_url,
             story_title: e.story_title,
             fave: false,
-          }
+          };
         }
-        return e
-      })
-      setUpadateData(newArr)
+        return e;
+      });
+      setUpadateData(newArr);
     }
-  }
+  };
   // console.log(page)
   return (
     <Container>
@@ -175,7 +178,7 @@ function AllNews({ choice }) {
         </div>
       ) : null}
     </Container>
-  )
+  );
 }
 
-export default AllNews
+export default AllNews;
