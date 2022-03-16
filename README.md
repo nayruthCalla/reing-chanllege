@@ -1,4 +1,4 @@
-# Hacker News Challenge
+# Hacker News - Reign-Challenge
 HackerNewsaraign allows you to see the news the technologies that you like the most React, Angula Vuejs
 
 ### ❤️ Check the[DEMO](https://hackernewsreing.netlify.app/) 👀 ❤️
