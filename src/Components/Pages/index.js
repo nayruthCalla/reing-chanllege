@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import styled from 'styled-components'
-import AllNwes from './AllNews'
+import { useState } from 'react';
+import styled from 'styled-components';
+import AllNwes from './AllNews';
 
 const Container = styled.div`
   display: flex;
@@ -8,11 +8,11 @@ const Container = styled.div`
   align-items: center;
   flex: 1;
   width: 100%;
-`
+`;
 
 const FilterContainer = styled.div`
   margin: 34px;
-`
+`;
 
 const Button = styled.button`
   width: 98px;
@@ -38,10 +38,10 @@ const Button = styled.button`
   &:hover {
     opacity: 0.4;
   }
-`
+`;
 
 function Home() {
-  const [choice, setChoise] = useState('All')
+  const [choice, setChoise] = useState('All');
 
   return (
     <Container>
@@ -50,7 +50,7 @@ function Home() {
           className={`${choice === 'All' ? 'active' : ''}`}
           type="button"
           onClick={() => {
-            setChoise('All')
+            setChoise('All');
           }}
         >
           All
@@ -59,7 +59,7 @@ function Home() {
           className={`${choice === 'Faves' ? 'active' : ''}`}
           type="button"
           onClick={() => {
-            setChoise('Faves')
+            setChoise('Faves');
           }}
         >
           My faves
@@ -67,7 +67,7 @@ function Home() {
       </FilterContainer>
       <AllNwes choice={choice} />
     </Container>
-  )
+  );
 }
 
-export default Home
+export default Home;

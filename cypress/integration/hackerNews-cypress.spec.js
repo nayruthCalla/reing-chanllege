@@ -1,5 +1,4 @@
 /* eslint-disable */
-/// <reference types="Cypress" />
 describe('HACKER NEWS - 2to2', () => {
   beforeEach(() => {
     cy.visit('/');
