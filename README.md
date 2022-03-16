@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Hacker News Challenge
+### ❤️ Revisa la [DEMO](https://hackernewsreing.netlify.app/) 👀 ❤️
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a488b7a6-1924-4f52-8aa0-25d614d67d4b/deploy-status)](https://app.netlify.com/sites/hackernewsreing/deploys)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+![image](https://user-images.githubusercontent.com/47750079/158606941-8b691c20-a870-496f-9672-25813967456d.png)
 
-In the project directory, you can run:
+## FUNCTIONALITY:
 
-### `npm start`
+- [x] 💚 The selected filter should persist on the local storage
+- [x] 💚 The favorited posts should persist on the local storage
+- [x] 💚 The web app is expected to work as a responsive web application
+- [x] 💚 When clicking on the row, a new tab should be open with the link of the post
+(story_url)
+- [x] 💚 Clicking on the “like button” should not trigger the opening of the post URL link
+- [x] 💚 When hovering on the row, apply opacity to the entire row and its children (texts,
+icons, like button, etc)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## BONUS:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [x] 💚 Implement unit testing (Testing library)
+- [x] 💚 Implement Test end to End (Cypress)
+- [x] 💚 Implement of documentation deployed in [chromatic](https://6231d5ec6ce797003aa83f37-asupknmflg.chromatic.com/?path=/story/layout-newscard--basic).(StoryBook)
 
-### `npm test`
+## Used technologies
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ * [React](https://es.reactjs.org/)
+ * [Styled Components](https://styled-components.com/)
+ * [Testing library](https://testing-library.com/)
+ * [Cypress](https://www.cypress.io/)
+ * [Storybook](https://storybook.js.org/)
+ * [Chromatic](https://www.chromatic.com/)
+ * [Netlify](https://www.netlify.com/)
+ * [Git](https://git-scm.com/)
+ * [GitHub Proyects](https://github.com/nayruthCalla/reing-chanllege/projects/1)
 
-### `npm run build`
+##  Installation
+1) Have a 📝 text editor.
+2) If you use a "UNIX-like" operating system, like GNU/Linux or MacOS, you already have a shell (terminal) installed by default (and probably git too 🐧). If you use Windows you can use Git bash.
+3) Make your own 🍴 fork of the repository.
+4) ⬇️ Clone your fork to your computer (local copy).
+5) 📦 Install the project dependencies with the npm install command, provided you already have [node.js](https://nodejs.org/en/) installed.
+6) 🚀 npm run start
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##  Tests
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Unit testing
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+🚀 npm run test
 
-### `npm run eject`
+* Test end to End 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+🚀 npm run cypress:open
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![image](https://user-images.githubusercontent.com/47750079/147318587-87660328-2dce-4ead-bd9f-972151e450b0.png)
+![image](https://user-images.githubusercontent.com/47750079/147844782-d7738ed2-08c3-495c-bfdf-fee72404e208.png)
+![image](https://user-images.githubusercontent.com/47750079/158611362-601b7135-8a6d-4920-ac39-1cd03b135b8b.png)
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Made by [NayruthCalla](https://iamp.netlify.app/ia/nayruthCalla)
