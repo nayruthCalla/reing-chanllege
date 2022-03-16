@@ -81,7 +81,7 @@ const LoadingSpin = styled.div`
   }
 `
 
-const Loading = () => {
+function Loading() {
   return (
     <LoadingSpin>
       <div />

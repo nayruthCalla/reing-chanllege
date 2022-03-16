@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import SelectCustom from '../Layout/SelectCustom'
 import selectValues from '../../utils/selectValues'
-import CommentCard from '../Layout/CommentCard'
+import NewsCard from '../Layout/NewsCard'
 import Loading from '../Layout/Loading/Loading'
 import Pagination from '../Layout/Pagination'
 import { getDataHackerNews } from '../../context/actions'
@@ -48,7 +48,7 @@ const PaginationContainerMobile = styled.div`
   }
 `
 
-const AllComments = ({ choice }) => {
+function AllNews({ choice }) {
   const [option, setOption] = useState('Angular')
   const [upadateData, setUpadateData] = useState([])
   const [onlyFaves, setOnlyFaves] = useState([])
@@ -138,7 +138,7 @@ const AllComments = ({ choice }) => {
                 !hit.author ||
                 !hit.story_url ||
                 !hit.story_title ? null : (
-                  <CommentCard
+                  <NewsCard
                     key={hit.objectID}
                     hit={hit}
                     handlerFavorite={handlerFavorite}
@@ -150,7 +150,7 @@ const AllComments = ({ choice }) => {
                 !hit.author ||
                 !hit.story_url ||
                 !hit.story_title ? null : (
-                  <CommentCard
+                  <NewsCard
                     key={hit.objectID}
                     hit={hit}
                     handlerFavorite={handlerFavorite}
@@ -178,4 +178,4 @@ const AllComments = ({ choice }) => {
   )
 }
 
-export default AllComments
+export default AllNews

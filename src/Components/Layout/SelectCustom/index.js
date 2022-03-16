@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useState } from 'react'
 import styled from 'styled-components'
 import { FaAngleDown } from 'react-icons/fa'
@@ -77,7 +78,7 @@ const Span = styled.span`
   color: #343434;
 `
 
-const SelectCustom = ({ defaultValue, options, setOption }) => {
+function SelectCustom({ defaultValue, options, setOption }) {
   const [showSelect, setShowSelect] = useState(false)
   const [buttonText, setbuttonText] = useState(defaultValue)
 
@@ -89,6 +90,7 @@ const SelectCustom = ({ defaultValue, options, setOption }) => {
   return (
     <Container>
       <Button
+        name="select"
         type="button"
         onClick={() => {
           setShowSelect(!showSelect)
