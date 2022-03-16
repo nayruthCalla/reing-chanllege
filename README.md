@@ -1,5 +1,5 @@
 # Hacker News Challenge
-HackerNewsaraing allows you to see the news the technologies that you like the most React, Angula Vuejs
+HackerNewsaraign allows you to see the news the technologies that you like the most React, Angula Vuejs
 
 ### ❤️ Check the[DEMO](https://hackernewsreing.netlify.app/) 👀 ❤️
 [![Netlify Status](https://api.netlify.com/api/v1/badges/a488b7a6-1924-4f52-8aa0-25d614d67d4b/deploy-status)](https://app.netlify.com/sites/hackernewsreing/deploys)
