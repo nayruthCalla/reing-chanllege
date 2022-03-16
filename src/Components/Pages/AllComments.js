@@ -25,6 +25,7 @@ const CommentsConatiner = styled.section`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  /* flex: 1; */
   @media screen and (min-width: 768px) {
   }
   @media screen and (min-width: 1024px) {
@@ -34,14 +35,26 @@ const CommentsConatiner = styled.section`
     align-items: center;
   }
 `
-const numberPage = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+const PaginationContainerDesk = styled.div`
+  display: none;
+  @media screen and (min-width: 1024px) {
+    display: flex;
+  }
+`
+const PaginationContainerMobile = styled.div`
+  display: flex;
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
+`
 
 const AllComments = ({ choice }) => {
   const [option, setOption] = useState('Angular')
   const [upadateData, setUpadateData] = useState([])
   const [onlyFaves, setOnlyFaves] = useState([])
   const [page, setPage] = useState(0)
-  // const { isLoading } = useAppState()
+  const paginIni = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  const paginIniMobile = [0, 1, 2]
 
   const dispatch = useAppDispatch()
 
@@ -103,7 +116,7 @@ const AllComments = ({ choice }) => {
       setUpadateData(newArr)
     }
   }
-  console.log(page)
+  // console.log(page)
   return (
     <Container>
       {choice === 'All' ? (
@@ -146,7 +159,21 @@ const AllComments = ({ choice }) => {
               )}
         </CommentsConatiner>
       )}
-      <Pagination numberPage={numberPage} setPage={setPage} page={page} />
+      {choice === 'All' ? (
+        <div>
+          <PaginationContainerDesk className="desktop">
+            <Pagination paginIni={paginIni} setPage={setPage} page={page} />
+          </PaginationContainerDesk>
+          <PaginationContainerMobile>
+            <Pagination
+              className="mobile"
+              paginIni={paginIniMobile}
+              setPage={setPage}
+              page={page}
+            />
+          </PaginationContainerMobile>
+        </div>
+      ) : null}
     </Container>
   )
 }

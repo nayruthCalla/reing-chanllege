@@ -41,10 +41,10 @@ const Span = styled.span`
   text-align: center;
 `
 
-const Pagination = ({ paginIni, setPage, page }) => {
+const Pagination = ({ setPage, page }) => {
   const [isActive, setIsActive] = useState(0)
 
-  const [numberPage, setNumberPage] = useState(paginIni)
+  const [numberPage, setNumberPage] = useState([0, 1, 2, 3])
 
   const handlerClick = (element) => {
     setPage(element)
